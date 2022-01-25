@@ -6,7 +6,7 @@ function httpGetAllLaunches(req, res){
 
 function httpAddNewLaunch(req, res){
   const launch = req.body
-  if(!launch.mission || !launch.rocket || !launch.destination || !launch.launchDate ){
+  if(!launch.mission || !launch.rocket || !launch.target || !launch.launchDate ){
     return res.status(400).json({
       error: 'Invalid Launch Paramaters'
     })
@@ -22,7 +22,12 @@ function httpAddNewLaunch(req, res){
   return res.status(201).json(launch)
 }
 
+function httpAbortLaunch(req, res){
+  const launchId = req.params.id;
+}
+
 module.exports = {
   httpGetAllLaunches,
-  httpAddNewLaunch
+  httpAddNewLaunch,
+  httpAbortLaunch
 }
